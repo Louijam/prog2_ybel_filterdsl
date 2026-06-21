@@ -13,10 +13,35 @@ public class AstBuilders {
     return simplify(translator.apply(parse(query)));
   }
 
-  public static Expr simplify(Expr e) {
-    // TODO
-    return e;
-  }
+    public static Expr simplify(Expr e) {
+        return switch (e) {
+
+            case Expr.Not(var inner) -> {
+                Expr simplifiedInner = simplify(inner);
+
+                // doppelte Negation: not (not x) -> x
+                if (simplifiedInner instanceof Expr.Not(var inner2)) {
+                    yield simplify(inner2);
+                }
+
+                yield new Expr.Not(simplifiedInner);
+            }
+
+            case Expr.And(var left, var right) ->
+                new Expr.And(simplify(left), simplify(right));
+
+            case Expr.Or(var left, var right) ->
+                new Expr.Or(simplify(left), simplify(right));
+
+            case Expr.Comparison(var field, var op, var value) ->
+                new Expr.Comparison(field, op, value);
+
+            case Expr.InList(var field, var values) ->
+                new Expr.InList(field, values);
+
+            default -> e;
+        };
+    }
 
   public static FilterParser.QueryContext parse(String query) {
     var cs = CharStreams.fromString(query);
