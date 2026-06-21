@@ -1,0 +1,8 @@
+QUERY:
+genre in ("rock", "jazz")
+
+=== VISITOR ===
+(genre in ("rock", "jazz"))
+
+=== PATTERN ===
+(genre in ("rock", "jazz"))

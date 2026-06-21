@@ -1,0 +1,8 @@
+QUERY:
+year <= 1965
+
+=== VISITOR ===
+(year <= 1965)
+
+=== PATTERN ===
+(year <= 1965)

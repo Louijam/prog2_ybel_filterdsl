@@ -1,0 +1,8 @@
+QUERY:
+artist == "Beatles"
+
+=== VISITOR ===
+(artist == "Beatles")
+
+=== PATTERN ===
+(artist == "Beatles")

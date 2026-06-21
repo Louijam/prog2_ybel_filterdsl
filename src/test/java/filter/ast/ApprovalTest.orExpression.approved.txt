@@ -1,0 +1,8 @@
+QUERY:
+artist == "Beatles" or year == 1965
+
+=== VISITOR ===
+((artist == "Beatles") or (year == 1965))
+
+=== PATTERN ===
+((artist == "Beatles") or (year == 1965))

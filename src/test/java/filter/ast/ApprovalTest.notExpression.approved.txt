@@ -1,0 +1,8 @@
+QUERY:
+not artist == "Beatles"
+
+=== VISITOR ===
+(not (artist == "Beatles"))
+
+=== PATTERN ===
+(not (artist == "Beatles"))
